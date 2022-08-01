@@ -20,7 +20,21 @@ for all_combinations in range(1440):
             if h == 10:
                 h = 0
                 second_h += 1
+    
+    if sum > 9:
+        sum = str(sum)
+        A = 1
+        result = []
+        for digit in range(0, len(sum), A):
+            result.append(int(sum[digit : digit + A]))
 
+        first_digit = result[0]
+        second_digit = result[1]
+
+        sum = first_digit + second_digit
+    
+    if sum == 10:
+        sum = 1
 
     with open("all-sums.txt", "a") as file:
         sum = str(sum)
@@ -29,7 +43,7 @@ for all_combinations in range(1440):
 list_of_all_sums = open("all-sums.txt").read().splitlines()
 time_count = 0
 
-for all_combinations in range(25):
+for all_combinations in range(10):
     time_count = str(time_count)
     the_exact_count = list_of_all_sums.count(time_count)
     time_count = int(time_count)
@@ -43,8 +57,5 @@ for all_combinations in range(25):
 for i in range(0, len(list_of_all_sums)):
     list_of_all_sums[i] = int(list_of_all_sums[i])
 
-with open("all-sums.txt", "w") as file:
-    file.truncate()
-
-      
-print("_________________________________________________________________________________________________\nThe smallest appearing number is: 0\nThe largest appearing number is: 24\nThe least appearing numbers are 0 and 24 (appeared 1 time)\nThe most appearing number is 12 (appeared 125 times)\nThe 2nd most appearing number is 11 (appeared 124 times)\nThe 3rd most appearing number is 13 (appeared 121 times)")
+    
+print("_________________________________________________________________________________________________\nThe smallest appearing number is: 0\nThe largest appearing number is: 9\nThe least appearing number is 0 (appeared 1 time)\nThe most appearing number is 5 (appeared 162 times)\nThe 2nd most appearing numbers are 4 and 6 (appeared 161 times)\nThe 3rd most appearing numbers are 3 and 7 (appeared 160 times)")
